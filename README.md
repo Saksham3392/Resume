@@ -26,7 +26,7 @@ An engineering-first personal portfolio and interactive resume website built to 
 Run the following commands in Command Prompt (CMD):
 
 ```cmd
-cd /d "c:\Users\Asus\Documents\Resume" && start http://localhost:5080 && python -m http.server 5080
+cd /d "c:\Users\Asus\Documents\Resume" && start http://localhost:5040 && python -m http.server 5040
 ```
 ---
 
