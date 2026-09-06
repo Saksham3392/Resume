@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saksham Sheoran — Full-Stack Software Engineer</title>
+  <meta name="description" content="Personal portfolio and resume of Saksham Sheoran — Full-Stack Software Engineer and Computer Science & Engineering student at Chitkara University, focused on building scalable web applications, reliable backend systems, and polished user experiences." />
+  <meta name="author" content="Saksham Sheoran" />
+  
+  <!-- Favicon Monogram -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2305070c'/><text x='50%' y='58%' font-size='44' font-weight='900' fill='%232997ff' font-family='-apple-system, sans-serif' text-anchor='middle' dominant-baseline='middle'>SS</text></svg>" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              base: '#05070c',
+              surface: '#0a0e17',
+              card: 'rgba(18, 24, 38, 0.75)',
+              blue: '#2997ff',
+              cyan: '#38bdf8',
+              indigo: '#5e5ce6',
+              green: '#30d158'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            heading: ['"Syne"', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'SFMono-Regular', 'Menlo', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Custom CSS Styles -->
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+
+<body class="bg-[#05070c] text-[#f5f5f7] selection:bg-[#2997ff] selection:text-white relative min-h-screen">
+
+  <!-- ====================================================================
+       1. AMBIENT BACKDROP + DYNAMIC LIGHTING CANVAS + MOUSE-SCRUB VIDEO
+       ==================================================================== -->
+  <!-- Ambient Gradient Dynamic Follower Layer -->
+  <div id="ambient-light-glow" class="ambient-cursor-glow"></div>
+
+  <!-- Interactive Background Mesh Canvas -->
+  <canvas id="bg-interactive-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-[1]"></canvas>
+
+  <!-- Background Video (Autoplays silently, scrubbable via mouse/scroll) -->
+  <video 
+    id="bg-video" 
+    src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260826_041744_63efcd78-bf7d-4039-99e2-2461e8a61903.mp4" 
+    autoplay
+    loop
+    muted 
+    playsinline 
+    preload="auto"
+  ></video>
+
+  <!-- Dark Vignette Overlay -->
+  <div class="video-overlay"></div>
+
+  <!-- Custom Cinematic Interactive Cursor -->
+  <div id="custom-cursor-dot" class="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring" class="custom-cursor-ring"></div>
+
+  <!-- ====================================================================
+       2. FIXED NAVIGATION BAR (z-index: 50)
+       ==================================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 px-5 sm:px-8 py-3.5 sm:py-4 flex justify-between items-center transition-all bg-black/25 backdrop-blur-md border-b border-white/[0.06]">
+    
+    <!-- Logo (left) -->
+    <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group">
+      <span class="nav-logo text-[20px] sm:text-[24px] font-extrabold tracking-tight text-white group-hover:opacity-85 transition-opacity">
+        Saksham Sheoran
+      </span>
+      <span class="text-[22px] sm:text-[26px] text-[#2997ff] select-none -tracking-[0.02em] leading-none">
+        /&gt;
+      </span>
+    </a>
+
+    <!-- Desktop Nav Links (center, hidden below md) -->
+    <nav class="hidden md:flex items-center gap-6 text-[15px] lg:text-[16px] font-sans text-white/80">
+      <a href="#summary" class="hover:text-[#2997ff] transition-colors">Overview</a>
+      <a href="#skills" class="hover:text-[#2997ff] transition-colors">Skills</a>
+      <a href="#projects" class="hover:text-[#2997ff] transition-colors">Selected Projects</a>
+      <a href="#approach" class="hover:text-[#2997ff] transition-colors">Approach</a>
+      <a href="#about" class="hover:text-[#2997ff] transition-colors">Education & Bio</a>
+      <a href="#grades" class="hover:text-[#2997ff] transition-colors">Grades</a>
+    </nav>
+
+    <!-- Desktop CTA & Social Coordinates (right, hidden below md) -->
+    <div class="hidden md:flex items-center gap-3.5">
+      <a href="https://github.com/Saksham3392" target="_blank" rel="noopener noreferrer" class="text-white/70 hover:text-white transition-colors" title="GitHub: Saksham3392">
+        <i class="fa-brands fa-github text-lg"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/saksham-sheoran/" target="_blank" rel="noopener noreferrer" class="text-white/70 hover:text-[#2997ff] transition-colors" title="LinkedIn: SAKSHAM SHEORAN">
+        <i class="fa-brands fa-linkedin-in text-lg"></i>
+      </a>
+      <a href="#contact" class="px-4 py-2 rounded-full text-xs font-mono font-semibold bg-white text-black hover:bg-[#2997ff] hover:text-white transition-all shadow-md">
+        Contact Me
+      </a>
+    </div>
+
+    <!-- Mobile Hamburger (visible below md) -->
+    <button 
+      id="mobile-hamburger-btn" 
+      class="md:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 p-2 focus:outline-none z-50"
+      aria-label="Toggle Navigation Menu"
+    >
+      <span class="hamburger-bar bar-top"></span>
+      <span class="hamburger-bar bar-mid"></span>
+      <span class="hamburger-bar bar-bot"></span>
+    </button>
+  </header>
+
+  <!-- Mobile Fullscreen Overlay (z-index: 40) -->
+  <div 
+    id="mobile-nav-overlay" 
+    class="fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl flex flex-col justify-center px-8 gap-7 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+  >
+    <a href="#summary" class="mobile-overlay-link text-[28px] font-semibold text-white hover:text-[#2997ff]">Overview</a>
+    <a href="#skills" class="mobile-overlay-link text-[28px] font-semibold text-white hover:text-[#2997ff]">Technical Skills</a>
+    <a href="#projects" class="mobile-overlay-link text-[28px] font-semibold text-white hover:text-[#2997ff]">Selected Projects</a>
+    <a href="#approach" class="mobile-overlay-link text-[28px] font-semibold text-white hover:text-[#2997ff]">Engineering Approach</a>
+    <a href="#about" class="mobile-overlay-link text-[28px] font-semibold text-white hover:text-[#2997ff]">Education & Bio</a>
+    <a href="#grades" class="mobile-overlay-link text-[28px] font-semibold text-white hover:text-[#2997ff]">Grades</a>
+    <a href="#contact" class="mobile-overlay-link text-[28px] font-semibold text-[#2997ff] underline underline-offset-4">Contact Me</a>
+    
+    <div class="pt-4 flex items-center gap-6 border-t border-white/10">
+      <a href="https://github.com/Saksham3392" target="_blank" class="text-lg text-white/80 hover:text-white"><i class="fa-brands fa-github mr-2"></i>GitHub</a>
+      <a href="https://www.linkedin.com/in/saksham-sheoran/" target="_blank" class="text-lg text-white/80 hover:text-[#2997ff]"><i class="fa-brands fa-linkedin-in mr-2"></i>LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       3. HERO SECTION (z-index: 10)
+       ==================================================================== -->
+  <section id="hero" class="relative z-10 min-h-screen flex flex-col justify-center px-5 sm:px-8 md:px-12 pt-28 pb-16">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center max-w-7xl mx-auto w-full">
+      
+      <!-- HERO LEFT: Authentic Engineering Identity & Call-to-Actions -->
+      <div class="lg:col-span-7 flex flex-col justify-center">
+        
+        <!-- Status Pill -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2997ff]/10 border border-[#2997ff]/20 text-[#2997ff] font-mono text-xs mb-5 w-fit">
+          <span class="w-2 h-2 rounded-full bg-[#30d158] animate-pulse"></span>
+          <span>Available for Software Engineering Opportunities — 2026/2027</span>
+        </div>
+
+        <!-- Name & Engineering Title with Entrance Animation -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-heading text-white tracking-tight leading-[1.08] mb-3">
+          Saksham Sheoran
+        </h1>
+        <h2 id="hero-title-animated" class="text-xl sm:text-2xl lg:text-3xl font-semibold font-heading text-gradient-cyan mb-5">
+          Full-Stack Software Engineer
+        </h2>
+
+        <!-- Animated Bio Sentence with Live Typewriter & Blinking Cursor -->
+        <p class="typewriter-bio-p text-slate-300 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl min-h-[56px] sm:min-h-[48px]">
+          <span id="hero-typewriter-text">Computer Science & Engineering student at Chitkara University, focused on building scalable web applications, reliable backend systems, and polished user experiences.</span><span id="typewriter-cursor" class="typewriter-cursor"></span>
+        </p>
+
+        <!-- Action Buttons: View Projects, Download Resume, Contact Me -->
+        <div class="action-pills-container mb-8">
+          <a href="#projects" class="pill-btn-white">
+            <i class="fa-solid fa-layer-group text-xs mr-2"></i>
+            <span>View Projects</span>
+          </a>
+          <button id="download-resume-btn" class="pill-btn-outline" title="Download Official Resume">
+            <i class="fa-solid fa-file-arrow-down text-xs"></i>
+            <span>Download Resume</span>
+          </button>
+          <a href="#contact" class="pill-btn-outline">
+            <i class="fa-regular fa-envelope text-xs"></i>
+            <span>Contact Me</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- HERO RIGHT: 3D Tilt Headshot & Live Credential Card -->
+      <div class="lg:col-span-5 flex items-center justify-center relative">
+        <div class="tilt-element glass-card relative w-full max-w-sm aspect-[4/5] rounded-[32px] p-3 shadow-2xl animate-float">
+          <div class="w-full h-full rounded-[24px] overflow-hidden relative bg-[#0a0e17]">
+            
+            <!-- Saksham's Profile Photo -->
+            <img 
+              src="assets/profile.jpg" 
+              alt="Saksham Sheoran — Full-Stack Software Engineer" 
+              class="w-full h-full object-cover object-top filter contrast-[1.05] brightness-95"
+            />
+
+            <!-- Ambient Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent pointer-events-none"></div>
+
+            <!-- Floating Overlay Credentials -->
+            <div class="absolute bottom-4 left-4 right-4 glass-card p-4 rounded-2xl border border-white/20 backdrop-blur-xl">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-sm font-bold font-heading text-white">Saksham Sheoran</h3>
+                  <p class="text-[11px] font-mono text-[#2997ff] mt-0.5">Chitkara University • CSE in AI-ML</p>
+                </div>
+                <a href="https://github.com/Saksham3392" target="_blank" class="h-8 w-8 rounded-full bg-[#2997ff]/20 border border-[#2997ff]/40 flex items-center justify-center text-[#2997ff] text-xs hover:scale-110 transition-transform" title="GitHub Profile">
+                  <i class="fa-brands fa-github text-sm"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Status Pill -->
+            <div class="absolute top-4 right-4 glass-card px-3 py-1 rounded-full border border-white/20 text-[10px] font-mono flex items-center gap-2">
+              <span class="h-1.5 w-1.5 rounded-full bg-[#30d158] animate-pulse"></span>
+              <span>Available for Roles</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ====================================================================
+       4. PROFESSIONAL SUMMARY SECTION
+       ==================================================================== -->
+  <section id="summary" class="relative z-10 py-16 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto border-t border-white/10">
+    <div class="glass-card p-8 sm:p-12 lg:p-16 scroll-reveal">
+      <div class="max-w-3xl section-header-reveal">
+        <span class="text-xs font-mono text-[#2997ff] uppercase tracking-widest">// PROFESSIONAL SUMMARY</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-white mt-3 mb-6 leading-tight">
+          Building Software That Solves Real Problems
+        </h2>
+        <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p>
+            I am a Computer Science & Engineering student with a strong interest in full-stack development and software engineering. I build web applications across the frontend, backend, databases, APIs, and deployment.
+          </p>
+          <p>
+            My approach combines strong computer science fundamentals with practical development—writing clean code, designing maintainable systems, optimizing performance, and creating intuitive user experiences.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       5. TECHNICAL SKILLS SECTION (CLEAN & CATEGORIZED)
+       ==================================================================== -->
+  <section id="skills" class="relative z-10 py-20 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto border-t border-white/10">
+    <div class="scroll-reveal section-header-reveal mb-12">
+      <span class="text-xs font-mono text-[#2997ff] uppercase tracking-widest">// CORE COMPETENCIES</span>
+      <h2 class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+        Technical Skills & <br />
+        <span class="text-gradient-cyan">Engineering Stack</span>
+      </h2>
+      <p class="text-slate-400 text-sm mt-3 max-w-2xl">
+        Technologies, tools, and computer science foundations applied across real-world projects and distributed systems.
+      </p>
+    </div>
+
+    <!-- 6 Categorized Skill Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- 1. Languages -->
+      <div class="scroll-reveal reveal-stagger-1 glass-card p-7 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4 text-[#2997ff]">
+            <i class="fa-solid fa-code text-xl"></i>
+            <h3 class="text-lg font-bold font-heading text-white">Languages</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">C++</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Java</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">JavaScript</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">TypeScript</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Python</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">SQL</span>
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-slate-400">
+          Core Programming
+        </div>
+      </div>
+
+      <!-- 2. Frontend -->
+      <div class="scroll-reveal reveal-stagger-2 glass-card p-7 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4 text-[#38bdf8]">
+            <i class="fa-solid fa-laptop-code text-xl"></i>
+            <h3 class="text-lg font-bold font-heading text-white">Frontend</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">HTML5</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">CSS3</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">React.js</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Next.js</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Responsive Web Design</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">UI Development</span>
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-slate-400">
+          Modern Client Engineering
+        </div>
+      </div>
+
+      <!-- 3. Backend -->
+      <div class="scroll-reveal reveal-stagger-3 glass-card p-7 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4 text-[#5e5ce6]">
+            <i class="fa-solid fa-server text-xl"></i>
+            <h3 class="text-lg font-bold font-heading text-white">Backend</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Node.js</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Express.js</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">REST APIs</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Auth & Authorization</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">API Development</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Server-Side Development</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Microservices</span>
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-slate-400">
+          Services & APIs
+        </div>
+      </div>
+
+      <!-- 4. Databases -->
+      <div class="scroll-reveal reveal-stagger-1 glass-card p-7 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4 text-[#30d158]">
+            <i class="fa-solid fa-database text-xl"></i>
+            <h3 class="text-lg font-bold font-heading text-white">Databases</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">PostgreSQL</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">MySQL</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">MongoDB</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Redis</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Database Design</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">SQL Query Optimization</span>
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-slate-400">
+          Data Architecture & Storage
+        </div>
+      </div>
+
+      <!-- 5. Tools & DevOps -->
+      <div class="scroll-reveal reveal-stagger-2 glass-card p-7 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4 text-[#af52de]">
+            <i class="fa-solid fa-screwdriver-wrench text-xl"></i>
+            <h3 class="text-lg font-bold font-heading text-white">Tools & DevOps</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Git</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">GitHub</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Docker</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Linux</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">CI/CD</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Vercel</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">AWS</span>
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-slate-400">
+          Workflow & Infrastructure
+        </div>
+      </div>
+
+      <!-- 6. Computer Science Fundamentals -->
+      <div class="scroll-reveal reveal-stagger-3 glass-card p-7 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4 text-[#f59e0b]">
+            <i class="fa-solid fa-microchip text-xl"></i>
+            <h3 class="text-lg font-bold font-heading text-white">Computer Science</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Data Structures & Algorithms</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Object-Oriented Programming</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">DBMS</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Operating Systems</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Computer Networks</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Distributed Systems</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">System Design</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Software Engineering</span>
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-slate-400">
+          Theoretical & Architectural Foundations
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       6. SELECTED PROJECTS SECTION
+       ==================================================================== -->
+  <section id="projects" class="relative z-10 py-24 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto border-t border-white/10">
+    
+    <div class="scroll-reveal section-header-reveal flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+      <div>
+        <span class="text-xs font-mono text-[#2997ff] uppercase tracking-widest">// PORTFOLIO ARTIFACTS</span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+          Selected Projects
+        </h2>
+        <p class="text-slate-400 text-sm mt-2">
+          Software I've Designed, Built & Shipped
+        </p>
+      </div>
+
+      <!-- Category Filter Pills & Carousel Controls -->
+      <div class="flex flex-wrap items-center gap-3">
+        <div id="project-category-pills" class="flex flex-wrap gap-2 p-1 rounded-full bg-white/[0.06] border border-white/10 backdrop-blur-md">
+          <button class="px-4 py-1.5 rounded-full text-xs font-mono transition-all bg-white text-black font-semibold shadow-md">All</button>
+          <button class="px-4 py-1.5 rounded-full text-xs font-mono transition-all text-slate-300 hover:text-white hover:bg-white/10">Full Stack</button>
+          <button class="px-4 py-1.5 rounded-full text-xs font-mono transition-all text-slate-300 hover:text-white hover:bg-white/10">Backend & Systems</button>
+          <button class="px-4 py-1.5 rounded-full text-xs font-mono transition-all text-slate-300 hover:text-white hover:bg-white/10">Web Applications</button>
+        </div>
+        <div class="flex items-center gap-2 ml-2">
+          <button id="carousel-prev" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white hover:bg-white/20 active:scale-95 transition-all" title="Previous Project">
+            <i class="fa-solid fa-chevron-left text-xs"></i>
+          </button>
+          <button id="carousel-next" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white hover:bg-white/20 active:scale-95 transition-all" title="Next Project">
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrollable Carousel Track -->
+    <div 
+      id="projects-track" 
+      class="flex gap-6 overflow-x-auto no-scrollbar pb-6 pt-2"
+    >
+      <!-- Card 1: CN-MCQs -->
+      <div class="shrink-0 w-[320px] sm:w-[390px] lg:w-[430px] glass-card tilt-element p-6 sm:p-7 flex flex-col justify-between cursor-pointer">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono font-semibold text-[#2997ff] uppercase">Web Applications</span>
+            <span class="text-[11px] font-mono text-[#94a3b8]">GitHub Activity</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold font-heading text-white mb-2">Computer Networks Assessment Engine (CN-MCQs)</h3>
+          <p class="text-xs text-slate-300 mb-4 leading-relaxed">Interactive exam simulator and practice platform for core Computer Networks and distributed protocol concepts.</p>
+          <div class="mb-5 p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
+            <div class="text-[11px] font-mono text-[#94a3b8] uppercase tracking-wider mb-2">Technical Implementation</div>
+            <ul class="space-y-2">
+              <li class="text-xs text-slate-300 leading-relaxed flex items-start gap-2">
+                <span class="text-[#2997ff] mt-1 shrink-0 text-[10px]">▹</span>
+                <span>Architected an interactive examination and quiz engine for Computer Networking protocols, subnetting, and transport layer topics.</span>
+              </li>
+              <li class="text-xs text-slate-300 leading-relaxed flex items-start gap-2">
+                <span class="text-[#2997ff] mt-1 shrink-0 text-[10px]">▹</span>
+                <span>Engineered instantaneous score calculation, time tracking, and detailed question explanation reviews without backend dependencies.</span>
+              </li>
+              <li class="text-xs text-slate-300 leading-relaxed flex items-start gap-2">
+                <span class="text-[#2997ff] mt-1 shrink-0 text-[10px]">▹</span>
+                <span>Structured modular question banks with randomized evaluation algorithms and persistent local progress tracking.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">JavaScript</span>
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">HTML5</span>
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">CSS3</span>
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">GitHub Pages</span>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-[#2997ff] flex items-center gap-1.5">
+              <span>View Full Details</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </span>
+            <div class="flex items-center gap-3">
+              <a href="https://github.com/Saksham3392/CN-MCQs" target="_blank" class="text-slate-400 hover:text-white" title="Source Code"><i class="fa-brands fa-github text-base"></i></a>
+              <a href="https://github.com/Saksham3392/CN-MCQs" target="_blank" class="text-slate-400 hover:text-[#2997ff]" title="Live System"><i class="fa-solid fa-arrow-trend-up text-base"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Java-Programming-Mcqs -->
+      <div class="shrink-0 w-[320px] sm:w-[390px] lg:w-[430px] glass-card tilt-element p-6 sm:p-7 flex flex-col justify-between cursor-pointer">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono font-semibold text-[#2997ff] uppercase">Web Applications</span>
+            <span class="text-[11px] font-mono text-[#94a3b8]">GitHub Activity</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold font-heading text-white mb-2">Java OOP & Concurrency Practice Suite</h3>
+          <p class="text-xs text-slate-300 mb-4 leading-relaxed">Interactive assessment suite covering Object-Oriented Programming, Java Memory Model, and JVM fundamentals.</p>
+          <div class="mb-5 p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
+            <div class="text-[11px] font-mono text-[#94a3b8] uppercase tracking-wider mb-2">Technical Implementation</div>
+            <ul class="space-y-2">
+              <li class="text-xs text-slate-300 leading-relaxed flex items-start gap-2">
+                <span class="text-[#2997ff] mt-1 shrink-0 text-[10px]">▹</span>
+                <span>Built comprehensive assessment modules for Core Java, multi-threading, JVM architecture, and exception handling hierarchies.</span>
+              </li>
+              <li class="text-xs text-slate-300 leading-relaxed flex items-start gap-2">
+                <span class="text-[#2997ff] mt-1 shrink-0 text-[10px]">▹</span>
+                <span>Designed immediate visual feedback loops, explanation breakdowns, and performance analytics for students.</span>
+              </li>
+              <li class="text-xs text-slate-300 leading-relaxed flex items-start gap-2">
+                <span class="text-[#2997ff] mt-1 shrink-0 text-[10px]">▹</span>
+                <span>Optimized client-side evaluation logic for zero-latency question transitions and mobile-friendly usability.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">JavaScript</span>
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">CSS3</span>
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">HTML5</span>
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">Java</span>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-[#2997ff] flex items-center gap-1.5">
+              <span>View Full Details</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </span>
+            <div class="flex items-center gap-3">
+              <a href="https://github.com/Saksham3392/Java-Programming-Mcqs" target="_blank" class="text-slate-400 hover:text-white" title="Source Code"><i class="fa-brands fa-github text-base"></i></a>
+              <a href="https://github.com/Saksham3392/Java-Programming-Mcqs" target="_blank" class="text-slate-400 hover:text-[#2997ff]" title="Live System"><i class="fa-solid fa-arrow-trend-up text-base"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Distributed Worker Queue & Job Pipeline -->
+      <div class="shrink-0 w-[320px] sm:w-[390px] lg:w-[430px] glass-card tilt-element p-6 sm:p-7 flex flex-col justify-between cursor-pointer">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono font-semibold text-[#2997ff] uppercase">Backend & Systems</span>
+            <span class="text-[11px] font-mono text-[#94a3b8]">Production System</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold font-heading text-white mb-2">Distributed Worker Queue & Job Pipeline</h3>
+          <p class="text-xs text-slate-300 mb-4 leading-relaxed">Distributed reverse proxy and asynchronous task routing engine with automated load handling and caching.</p>
+          <div class="mb-5 p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
+            <div class="text-[11px] font-mono text-[#94a3b8] uppercase tracking-wider mb-2">Technical Implementation</div>
+            <ul class="space-y-2">
+              <li class="text-xs text-slate-300 leading-relaxed flex items-start gap-2">
+                <span class="text-[#2997ff] mt-1 shrink-0 text-[10px]">▹</span>
+                <span>Designed and developed a modular task queue engine handling background workloads with exponential retry policies.</span>
+              </li>
+              <li class="text-xs text-slate-300 leading-relaxed flex items-start gap-2">
+                <span class="text-[#2997ff] mt-1 shrink-0 text-[10px]">▹</span>
+                <span>Built in-memory Redis BullMQ caching and pub/sub layers to reduce downstream database read bottlenecks.</span>
+              </li>
+              <li class="text-xs text-slate-300 leading-relaxed flex items-start gap-2">
+                <span class="text-[#2997ff] mt-1 shrink-0 text-[10px]">▹</span>
+                <span>Integrated JWT-based token authentication and role-based access control (RBAC) across protected endpoints.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">Node.js</span>
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">Express.js</span>
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">Redis</span>
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">Docker</span>
+            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/10">PostgreSQL</span>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-[#2997ff] flex items-center gap-1.5">
+              <span>View Full Details</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </span>
+            <div class="flex items-center gap-3">
+              <a href="https://github.com/Saksham3392" target="_blank" class="text-slate-400 hover:text-white" title="Source Code"><i class="fa-brands fa-github text-base"></i></a>
+              <a href="https://github.com/Saksham3392" target="_blank" class="text-slate-400 hover:text-[#2997ff]" title="Live System"><i class="fa-solid fa-arrow-trend-up text-base"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====================================================================
+       7. ENGINEERING APPROACH
+       ==================================================================== -->
+  <section id="approach" class="relative z-10 py-24 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto border-t border-white/10">
+    <div class="scroll-reveal section-header-reveal mb-14">
+      <span class="text-xs font-mono text-[#2997ff] uppercase tracking-widest">// METHODOLOGY</span>
+      <h2 class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+        Engineering Approach & <br />
+        <span class="text-gradient-cyan">Core Principles</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+      
+      <!-- 01 — Clean Architecture -->
+      <div class="scroll-reveal reveal-stagger-1 glass-card p-8 flex flex-col justify-between">
+        <div>
+          <span class="text-4xl font-extrabold font-heading text-[#2997ff]">01</span>
+          <h3 class="text-2xl font-bold font-heading text-white mt-4 mb-2">Clean Architecture</h3>
+          <p class="text-xs font-mono text-[#94a3b8] mb-4">Build software that remains understandable as it grows.</p>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Focus on modular components, separation of concerns, reusable code, well-structured APIs, and maintainable codebases.
+          </p>
+        </div>
+        <div class="mt-8 pt-4 border-t border-white/10 text-xs font-mono text-[#2997ff]">
+          Maintainability & Modularity
+        </div>
+      </div>
+
+      <!-- 02 — Performance -->
+      <div class="scroll-reveal reveal-stagger-2 glass-card p-8 flex flex-col justify-between">
+        <div>
+          <span class="text-4xl font-extrabold font-heading text-[#5e5ce6]">02</span>
+          <h3 class="text-2xl font-bold font-heading text-white mt-4 mb-2">Performance</h3>
+          <p class="text-xs font-mono text-[#94a3b8] mb-4">Make software fast, efficient, and reliable.</p>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Consider algorithmic complexity, database queries, network requests, caching, rendering performance, and backend efficiency.
+          </p>
+        </div>
+        <div class="mt-8 pt-4 border-t border-white/10 text-xs font-mono text-[#5e5ce6]">
+          Efficiency & Scalability
+        </div>
+      </div>
+
+      <!-- 03 — User Experience -->
+      <div class="scroll-reveal reveal-stagger-3 glass-card p-8 flex flex-col justify-between">
+        <div>
+          <span class="text-4xl font-extrabold font-heading text-[#30d158]">03</span>
+          <h3 class="text-2xl font-bold font-heading text-white mt-4 mb-2">User Experience</h3>
+          <p class="text-xs font-mono text-[#94a3b8] mb-4">Technical quality should translate into a better product.</p>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Build responsive interfaces with intuitive interactions, accessibility, consistency, and attention to detail.
+          </p>
+        </div>
+        <div class="mt-8 pt-4 border-t border-white/10 text-xs font-mono text-[#30d158]">
+          Reliability & Usability
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       8. ABOUT SAKSHAM & EDUCATION (BENTO GRID)
+       ==================================================================== -->
+  <section id="about" class="relative z-10 py-24 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto border-t border-white/10">
+    <div class="scroll-reveal section-header-reveal mb-12">
+      <span class="text-xs font-mono text-[#2997ff] uppercase tracking-widest">// PROFILE & ACADEMIA</span>
+      <h2 class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+        About & Academic <br />
+        <span class="text-gradient-emerald">Foundation</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+      
+      <!-- Bento 1: About Saksham (Span 7) -->
+      <div class="scroll-reveal md:col-span-7 glass-card p-8 sm:p-10 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-mono text-[#30d158] uppercase tracking-widest">// BACKGROUND</span>
+          <h3 class="text-2xl sm:text-3xl font-bold font-heading text-white mt-3 mb-4">
+            About Saksham
+          </h3>
+          <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              I am a Computer Science & Engineering student at Chitkara University who enjoys building software from idea to implementation.
+            </p>
+            <p>
+              My interests span full-stack development, backend engineering, databases, system design, and modern web technologies.
+            </p>
+            <p>
+              I enjoy solving engineering problems, learning new technologies, and turning complex requirements into simple, reliable products.
+            </p>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[#94a3b8]">
+          <span>Computer Science & Engineering</span>
+          <span class="text-[#2997ff]">Chitkara University</span>
+        </div>
+      </div>
+
+      <!-- Bento 2: Education & Coursework (Span 5) -->
+      <div class="scroll-reveal md:col-span-5 glass-card p-8 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-mono text-rose-400 uppercase tracking-widest">// EDUCATION</span>
+          <div class="flex items-center gap-3.5 my-5">
+            <div class="w-14 h-14 rounded-2xl bg-white p-2 shadow-lg flex items-center justify-center border border-white/20 shrink-0">
+              <img 
+                src="assets/chitkara-logo.png" 
+                alt="Chitkara University Logo" 
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <div>
+              <h4 class="text-lg font-bold font-heading text-white">Chitkara University</h4>
+              <p class="text-xs text-[#94a3b8] font-mono">Punjab, India</p>
+            </div>
+          </div>
+          
+          <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 mb-4">
+            <div class="text-[11px] font-mono text-[#94a3b8]">Degree Program</div>
+            <div class="text-sm font-bold text-white mt-0.5">B.E. Computer Science & Engineering in AI-ML</div>
+          </div>
+
+          <div>
+            <div class="text-xs font-mono text-[#94a3b8] uppercase tracking-wider mb-2.5">Relevant Coursework:</div>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-300">
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5">Data Structures & Algorithms</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5">Object-Oriented Programming</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5">DBMS</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5">Operating Systems</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5">Computer Networks</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5">Computer Architecture</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5">Software Engineering</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5">Distributed Systems</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-white/10 text-xs font-mono text-amber-400 flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Academic Foundation</span>
+        </div>
+      </div>
+
+      <!-- Bento: Grades & Academic Transcripts (Span 12) -->
+      <div id="grades" class="scroll-reveal md:col-span-12 glass-card p-6 sm:p-8">
+        
+        <!-- Header Strip -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-white/10">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-mono text-[#38bdf8] uppercase tracking-widest">// ACADEMIC TRANSCRIPTS &amp; PERFORMANCE</span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-bold font-heading text-white flex items-center gap-3">
+              <span>Grades</span>
+              <span class="text-xs font-mono font-normal px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">8 Semesters</span>
+            </h3>
+            <p class="text-xs sm:text-sm text-[#94a3b8] font-mono mt-1">
+              Chitkara University • B.E. Computer Science &amp; Engineering in AI-ML
+            </p>
+          </div>
+
+          <!-- Academic Badges (Clean, Single-line, No Wrapping) -->
+          <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 w-full lg:w-auto">
+            
+            <!-- Current CGPA -->
+            <div class="flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-white/[0.03] border border-white/10 flex items-center gap-3 whitespace-nowrap">
+              <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+                <i class="fa-solid fa-award text-xs"></i>
+              </div>
+              <div class="whitespace-nowrap">
+                <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400">Current CGPA</div>
+                <div class="text-sm font-bold font-mono text-white whitespace-nowrap leading-none mt-0.5">
+                  <span class="text-emerald-400 text-base font-extrabold">9.03</span><span class="text-slate-500 font-normal text-xs"> / 10.00</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Completed Credits -->
+            <div class="flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-white/[0.03] border border-white/10 flex items-center gap-3 whitespace-nowrap">
+              <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-[#38bdf8] shrink-0">
+                <i class="fa-solid fa-layer-group text-xs"></i>
+              </div>
+              <div class="whitespace-nowrap">
+                <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400">Completed Credits</div>
+                <div class="text-sm font-bold font-mono text-white whitespace-nowrap leading-none mt-0.5">
+                  <span class="text-white text-base font-extrabold">87.00</span> <span class="text-slate-400 font-normal text-xs">Credits</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Peak SGPA -->
+            <div class="flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-white/[0.03] border border-white/10 flex items-center gap-3 whitespace-nowrap">
+              <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-300 shrink-0">
+                <i class="fa-solid fa-star text-xs"></i>
+              </div>
+              <div class="whitespace-nowrap">
+                <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400">Peak SGPA</div>
+                <div class="text-sm font-bold font-mono text-white whitespace-nowrap leading-none mt-0.5">
+                  <span class="text-amber-300 text-base font-extrabold">10.00</span> <span class="text-slate-400 font-normal text-xs font-sans">(Sem 3)</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Master-Detail Layout: 4 Years List (Left) & Semester Result View (Right) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          
+          <!-- Left Column: 4 Year List & Semester Selectors (Span 4) -->
+          <div class="lg:col-span-4 flex flex-col gap-3">
+            <div class="flex items-center justify-between text-xs font-mono text-[#94a3b8] mb-1 px-1">
+              <span class="uppercase tracking-wider">Select Year / Semester</span>
+              <!-- <span class="text-[#38bdf8] text-[11px]">8 Semesters Total</span> -->
+            </div>
+
+            <!-- Year 1 Button & Semesters -->
+            <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all">
+              <button 
+                type="button" 
+                class="year-accordion-btn w-full flex items-center justify-between text-left group"
+                data-year="1"
+              >
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs font-mono font-bold text-white group-hover:text-[#38bdf8] transition-colors">
+                    Y1
+                  </div>
+                  <div>
+                    <span class="text-xs font-bold font-heading text-white block">Year 1</span>
+                    <span class="text-[10px] font-mono text-[#94a3b8]">2024 – 2025</span>
+                  </div>
+                </div>
+                <span class="px-2 py-0.5 rounded-full bg-[#30d158]/10 text-[#30d158] border border-[#30d158]/20 text-[10px] font-mono">
+                  Completed
+                </span>
+              </button>
+              
+              <div class="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-white/5">
+                <button 
+                  type="button" 
+                  class="sem-tab-btn px-3 py-2 rounded-xl text-left font-mono transition-all border bg-white/5 border-white/10 text-slate-300 hover:text-white hover:bg-white/10"
+                  data-sem="1"
+                >
+                  <div class="text-[11px] font-bold text-slate-300">Semester 1</div>
+                  <div class="text-[10px] text-slate-400">SGPA: 7.67</div>
+                </button>
+                <button 
+                  type="button" 
+                  class="sem-tab-btn px-3 py-2 rounded-xl text-left font-mono transition-all border bg-white/5 border-white/10 text-slate-300 hover:text-white hover:bg-white/10"
+                  data-sem="2"
+                >
+                  <div class="text-[11px] font-bold text-slate-300">Semester 2</div>
+                  <div class="text-[10px] text-slate-400">SGPA: 9.00</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Year 2 Button & Semesters (Active by default) -->
+            <div class="p-3.5 rounded-2xl bg-white/[0.04] border border-[#2997ff]/50 shadow-sm transition-all border-l-4 border-l-[#2997ff]">
+              <button 
+                type="button" 
+                class="year-accordion-btn w-full flex items-center justify-between text-left group"
+                data-year="2"
+              >
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-[#38bdf8]/20 border border-[#38bdf8]/30 flex items-center justify-center text-xs font-mono font-bold text-[#38bdf8]">
+                    Y2
+                  </div>
+                  <div>
+                    <span class="text-xs font-bold font-heading text-white block">Year 2</span>
+                    <span class="text-[10px] font-mono text-[#94a3b8]">2025 – 2026</span>
+                  </div>
+                </div>
+                <span class="px-2 py-0.5 rounded-full bg-[#30d158]/10 text-[#30d158] border border-[#30d158]/20 text-[10px] font-mono">
+                  Completed
+                </span>
+              </button>
+              
+              <div class="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-white/5">
+                <button 
+                  type="button" 
+                  class="sem-tab-btn px-3 py-2 rounded-xl text-left font-mono transition-all border bg-white/5 border-white/10 text-slate-300 hover:text-white hover:bg-white/10"
+                  data-sem="3"
+                >
+                  <div class="text-[11px] font-bold text-slate-300">Semester 3</div>
+                  <div class="text-[10px] text-amber-300">SGPA: 10.00 ★</div>
+                </button>
+                <button 
+                  type="button" 
+                  class="sem-tab-btn active px-3 py-2 rounded-xl text-left font-mono transition-all border bg-[#2997ff]/20 border-[#2997ff] text-white shadow-[0_0_15px_rgba(41,151,255,0.25)] ring-1 ring-[#2997ff]/50"
+                  data-sem="4"
+                >
+                  <div class="text-[11px] font-bold text-white flex items-center justify-between">
+                    <span>Semester 4</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#2997ff] shadow-[0_0_6px_#2997ff]"></span>
+                  </div>
+                  <div class="text-[10px] text-[#38bdf8] font-semibold">SGPA: 9.50 (CGPA 9.03)</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Year 3 Button & Semesters -->
+            <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all">
+              <button 
+                type="button" 
+                class="year-accordion-btn w-full flex items-center justify-between text-left group"
+                data-year="3"
+              >
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs font-mono font-bold text-white group-hover:text-[#38bdf8] transition-colors">
+                    Y3
+                  </div>
+                  <div>
+                    <span class="text-xs font-bold font-heading text-white block">Year 3</span>
+                    <span class="text-[10px] font-mono text-[#94a3b8]">2026 – 2027</span>
+                  </div>
+                </div>
+                <span class="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-mono">
+                  In Progress
+                </span>
+              </button>
+              
+              <div class="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-white/5">
+                <button 
+                  type="button" 
+                  class="sem-tab-btn px-3 py-2 rounded-xl text-left font-mono transition-all border bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10"
+                  data-sem="5"
+                >
+                  <div class="text-[11px] font-bold text-slate-300">Semester 5</div>
+                  <div class="text-[10px] text-amber-400/80">Pending</div>
+                </button>
+                <button 
+                  type="button" 
+                  class="sem-tab-btn px-3 py-2 rounded-xl text-left font-mono transition-all border bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10"
+                  data-sem="6"
+                >
+                  <div class="text-[11px] font-bold text-slate-300">Semester 6</div>
+                  <div class="text-[10px] text-slate-500">Upcoming</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Year 4 Button & Semesters -->
+            <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all">
+              <button 
+                type="button" 
+                class="year-accordion-btn w-full flex items-center justify-between text-left group"
+                data-year="4"
+              >
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs font-mono font-bold text-white group-hover:text-[#38bdf8] transition-colors">
+                    Y4
+                  </div>
+                  <div>
+                    <span class="text-xs font-bold font-heading text-white block">Year 4</span>
+                    <span class="text-[10px] font-mono text-[#94a3b8]">2027 – 2028</span>
+                  </div>
+                </div>
+                <span class="px-2 py-0.5 rounded-full bg-white/5 text-slate-400 border border-white/10 text-[10px] font-mono">
+                  Final Year
+                </span>
+              </button>
+              
+              <div class="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-white/5">
+                <button 
+                  type="button" 
+                  class="sem-tab-btn px-3 py-2 rounded-xl text-left font-mono transition-all border bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10"
+                  data-sem="7"
+                >
+                  <div class="text-[11px] font-bold text-slate-300">Semester 7</div>
+                  <div class="text-[10px] text-slate-500">Upcoming</div>
+                </button>
+                <button 
+                  type="button" 
+                  class="sem-tab-btn px-3 py-2 rounded-xl text-left font-mono transition-all border bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10"
+                  data-sem="8"
+                >
+                  <div class="text-[11px] font-bold text-slate-300">Semester 8</div>
+                  <div class="text-[10px] text-slate-500">Upcoming</div>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Semester Result View (Span 8) -->
+          <div class="lg:col-span-8">
+            <div id="grades-detail-container" class="rounded-2xl bg-white/[0.02] border border-white/10 p-5 sm:p-7 min-h-[460px] flex flex-col justify-between">
+              
+              <!-- Pre-rendered Default View (Semester 4) -->
+              <div>
+                <!-- Top Header of Semester -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+                  <div>
+                    <h4 class="text-xl sm:text-2xl font-bold font-heading text-white">Semester 4 Grade Sheet</h4>
+                    <p class="text-xs text-[#94a3b8] font-mono mt-0.5">Academic Session: 2025 – 2026 • Chitkara University</p>
+                  </div>
+                  
+                  <div class="flex items-center gap-3 text-xs font-mono">
+                    <div class="px-3.5 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-right">
+                      <span class="text-emerald-400/80 block text-[10px]">SGPA</span>
+                      <span class="text-base font-bold text-emerald-400">9.50</span>
+                    </div>
+                    <div class="px-3.5 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-right">
+                      <span class="text-cyan-400/80 block text-[10px]">CGPA</span>
+                      <span class="text-base font-bold text-cyan-300">9.03</span>
+                    </div>
+                    <div class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-right">
+                      <span class="text-slate-400 block text-[10px]">Credits</span>
+                      <span class="text-base font-bold text-white">22.00</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Responsive Courses Table with Sticky Header -->
+                <div class="overflow-x-auto my-3 max-h-[480px] overflow-y-auto pr-1">
+                  <table class="w-full text-left">
+                    <thead class="sticky top-0 bg-[#0c121e]/95 backdrop-blur-md z-10">
+                      <tr class="border-b border-white/10 text-[#94a3b8] text-[11px] font-mono uppercase tracking-wider">
+                        <th class="py-2.5 px-3 text-center w-12">#</th>
+                        <th class="py-2.5 px-3 w-32">Subject Code</th>
+                        <th class="py-2.5 px-3">Subject Name</th>
+                        <th class="py-2.5 px-3 text-center w-24">Credits</th>
+                        <th class="py-2.5 px-3 text-center w-24">Grade</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5">
+                      <tr class="hover:bg-white/[0.03] transition-colors border-b border-white/5">
+                        <td class="py-3 px-3 text-slate-400 text-center font-mono text-xs">1</td>
+                        <td class="py-3 px-3 text-[#38bdf8] font-mono font-semibold text-xs whitespace-nowrap">24APS4101</td>
+                        <td class="py-3 px-3 text-slate-100 font-sans font-medium text-sm leading-snug">Applied Probability and Random Processes</td>
+                        <td class="py-3 px-3 text-center text-slate-300 font-mono text-xs">3.00</td>
+                        <td class="py-3 px-3 text-center whitespace-nowrap"><span class="inline-flex items-center justify-center min-w-[34px] px-2.5 py-0.5 rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-xs font-mono font-bold">A+</span></td>
+                      </tr>
+                      <tr class="hover:bg-white/[0.03] transition-colors border-b border-white/5">
+                        <td class="py-3 px-3 text-slate-400 text-center font-mono text-xs">2</td>
+                        <td class="py-3 px-3 text-[#38bdf8] font-mono font-semibold text-xs whitespace-nowrap">24CAI0201</td>
+                        <td class="py-3 px-3 text-slate-100 font-sans font-medium text-sm leading-snug">Database Management Systems</td>
+                        <td class="py-3 px-3 text-center text-slate-300 font-mono text-xs">4.00</td>
+                        <td class="py-3 px-3 text-center whitespace-nowrap"><span class="inline-flex items-center justify-center min-w-[34px] px-2.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold">O</span></td>
+                      </tr>
+                      <tr class="hover:bg-white/[0.03] transition-colors border-b border-white/5">
+                        <td class="py-3 px-3 text-slate-400 text-center font-mono text-xs">3</td>
+                        <td class="py-3 px-3 text-[#38bdf8] font-mono font-semibold text-xs whitespace-nowrap">24CAI0202</td>
+                        <td class="py-3 px-3 text-slate-100 font-sans font-medium text-sm leading-snug">Java Programming</td>
+                        <td class="py-3 px-3 text-center text-slate-300 font-mono text-xs">4.00</td>
+                        <td class="py-3 px-3 text-center whitespace-nowrap"><span class="inline-flex items-center justify-center min-w-[34px] px-2.5 py-0.5 rounded-md bg-blue-500/15 text-blue-300 border border-blue-500/30 text-xs font-mono font-bold">A</span></td>
+                      </tr>
+                      <tr class="hover:bg-white/[0.03] transition-colors border-b border-white/5">
+                        <td class="py-3 px-3 text-slate-400 text-center font-mono text-xs">4</td>
+                        <td class="py-3 px-3 text-[#38bdf8] font-mono font-semibold text-xs whitespace-nowrap">24CAI0203</td>
+                        <td class="py-3 px-3 text-slate-100 font-sans font-medium text-sm leading-snug">Supervised and Unsupervised Learning</td>
+                        <td class="py-3 px-3 text-center text-slate-300 font-mono text-xs">4.00</td>
+                        <td class="py-3 px-3 text-center whitespace-nowrap"><span class="inline-flex items-center justify-center min-w-[34px] px-2.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold">O</span></td>
+                      </tr>
+                      <tr class="hover:bg-white/[0.03] transition-colors border-b border-white/5">
+                        <td class="py-3 px-3 text-slate-400 text-center font-mono text-xs">5</td>
+                        <td class="py-3 px-3 text-[#38bdf8] font-mono font-semibold text-xs whitespace-nowrap">24CAI0204</td>
+                        <td class="py-3 px-3 text-slate-100 font-sans font-medium text-sm leading-snug">Optimization Techniques</td>
+                        <td class="py-3 px-3 text-center text-slate-300 font-mono text-xs">2.00</td>
+                        <td class="py-3 px-3 text-center whitespace-nowrap"><span class="inline-flex items-center justify-center min-w-[34px] px-2.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold">O</span></td>
+                      </tr>
+                      <tr class="hover:bg-white/[0.03] transition-colors border-b border-white/5">
+                        <td class="py-3 px-3 text-slate-400 text-center font-mono text-xs">6</td>
+                        <td class="py-3 px-3 text-[#38bdf8] font-mono font-semibold text-xs whitespace-nowrap">24CAI0206</td>
+                        <td class="py-3 px-3 text-slate-100 font-sans font-medium text-sm leading-snug">Creative Thinking Tools for Success and Leadership</td>
+                        <td class="py-3 px-3 text-center text-slate-300 font-mono text-xs">2.00</td>
+                        <td class="py-3 px-3 text-center whitespace-nowrap"><span class="inline-flex items-center justify-center min-w-[34px] px-2.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold">O</span></td>
+                      </tr>
+                      <tr class="hover:bg-white/[0.03] transition-colors">
+                        <td class="py-3 px-3 text-slate-400 text-center font-mono text-xs">7</td>
+                        <td class="py-3 px-3 text-[#38bdf8] font-mono font-semibold text-xs whitespace-nowrap">24UNI0124</td>
+                        <td class="py-3 px-3 text-slate-100 font-sans font-medium text-sm leading-snug">Cyber Security</td>
+                        <td class="py-3 px-3 text-center text-slate-300 font-mono text-xs">3.00</td>
+                        <td class="py-3 px-3 text-center whitespace-nowrap"><span class="inline-flex items-center justify-center min-w-[34px] px-2.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold">O</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Footer of Table Record -->
+              <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11px] font-mono text-[#94a3b8]">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                  <span>Official University Grade Point Scale: O = 10, A+ = 9, A = 8, B+ = 7</span>
+                </div>
+                <div>
+                  Evaluated: <span class="text-white font-bold">7 Subjects</span> • Cumulative CGPA: <span class="text-emerald-400 font-bold">9.03</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Bento 3: Live GitHub Telemetry & Real-Time Repositories (Span 12) -->
+      <div id="github-activity-card" class="scroll-reveal md:col-span-12 glass-card p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white">
+              <i class="fa-brands fa-github text-xl"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-base sm:text-lg font-bold font-heading text-white">GitHub Activity &amp; Live Telemetry</h3>
+                <span class="px-2 py-0.5 rounded-full bg-[#30d158]/10 text-[#30d158] border border-[#30d158]/20 text-[10px] font-mono flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#30d158] animate-pulse"></span>
+                  Live API
+                </span>
+              </div>
+              <p class="text-xs font-mono text-[#94a3b8]">Verified handle: <a href="https://github.com/Saksham3392" target="_blank" class="text-[#2997ff] hover:underline">@Saksham3392</a></p>
+            </div>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="flex items-center gap-4 text-xs font-mono">
+            <div class="px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10">
+              <span class="text-[#94a3b8]">Public Repos:</span>
+              <span id="gh-repos-count" class="font-bold text-white ml-1">10</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10">
+              <span class="text-[#94a3b8]">Followers:</span>
+              <span id="gh-followers-count" class="font-bold text-white ml-1">2</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Repositories Grid Container -->
+        <div id="github-repos-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Populated dynamically via GitHub REST API -->
+          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 animate-pulse">
+            <div class="h-4 bg-white/10 rounded w-1/2 mb-2"></div>
+            <div class="h-3 bg-white/5 rounded w-3/4 mb-3"></div>
+            <div class="h-3 bg-white/5 rounded w-1/4"></div>
+          </div>
+          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 animate-pulse">
+            <div class="h-4 bg-white/10 rounded w-1/2 mb-2"></div>
+            <div class="h-3 bg-white/5 rounded w-3/4 mb-3"></div>
+            <div class="h-3 bg-white/5 rounded w-1/4"></div>
+          </div>
+          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 animate-pulse">
+            <div class="h-4 bg-white/10 rounded w-1/2 mb-2"></div>
+            <div class="h-3 bg-white/5 rounded w-3/4 mb-3"></div>
+            <div class="h-3 bg-white/5 rounded w-1/4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento 4: Developer Terminal Console (Span 12) -->
+      <div id="terminal" class="scroll-reveal md:col-span-12 glass-card p-6 sm:p-8">
+        <!-- Terminal Window Controls Header -->
+        <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+          <div class="flex items-center gap-2">
+            <span class="traffic-btn traffic-close"></span>
+            <span class="traffic-btn traffic-min"></span>
+            <span class="traffic-btn traffic-max"></span>
+            <span class="text-xs font-mono text-[#94a3b8] ml-3">saksham@portfolio: ~/developer-shell (bash)</span>
+          </div>
+          <span class="text-xs font-mono text-[#30d158] flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#30d158] animate-pulse"></span>
+            Shell Ready
+          </span>
+        </div>
+
+        <div id="terminal-output" class="max-h-60 overflow-y-auto font-mono text-xs text-slate-300 space-y-2 mb-3"></div>
+
+        <div class="flex items-center gap-2 pt-2 border-t border-white/10 font-mono text-xs">
+          <span class="text-[#2997ff] font-bold">saksham@portfolio:~$</span>
+          <input 
+            type="text" 
+            id="terminal-input" 
+            class="bg-transparent text-white outline-none font-mono text-xs w-full"
+            placeholder="Type 'help' for available commands (skills, projects, education, approach)..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       9. CONTACT SECTION
+       ==================================================================== -->
+  <section id="contact" class="relative z-10 py-24 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto border-t border-white/10">
+    <div class="scroll-reveal glass-card p-8 sm:p-14 lg:p-20">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <div class="lg:col-span-6 flex flex-col justify-between">
+          <div class="section-header-reveal">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2997ff]/10 border border-[#2997ff]/20 text-[#2997ff] font-mono text-xs mb-6">
+              <span class="w-2 h-2 rounded-full bg-[#2997ff] animate-pulse"></span>
+              <span>Software Engineering Inquiries</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-extrabold font-heading text-white mb-4">
+              Let's Build Something
+            </h2>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8 max-w-md">
+              Have a project, opportunity, or interesting technical problem? Let's connect.
+            </p>
+
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 mb-8 flex items-center justify-between">
+              <div>
+                <div class="text-xs font-mono text-[#94a3b8]">Email Address</div>
+                <div class="text-sm font-mono font-bold text-white mt-0.5">sakshamsheoran2005@gmail.com</div>
+              </div>
+              <button 
+                onclick="navigator.clipboard.writeText('sakshamsheoran2005@gmail.com'); alert('Copied to clipboard: sakshamsheoran2005@gmail.com');"
+                class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-[#2997ff] hover:bg-white/10"
+                title="Copy Email"
+              >
+                <i class="fa-regular fa-copy text-sm"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Verified Social Coordinates -->
+          <div class="flex flex-wrap gap-2.5">
+            <a href="https://github.com/Saksham3392" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl glass-card text-xs font-mono text-slate-300 hover:text-white flex items-center gap-2">
+              <i class="fa-brands fa-github text-sm"></i> GitHub: @Saksham3392
+            </a>
+            <a href="https://www.linkedin.com/in/saksham-sheoran/" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl glass-card text-xs font-mono text-slate-300 hover:text-[#2997ff] flex items-center gap-2">
+              <i class="fa-brands fa-linkedin-in text-sm"></i> LinkedIn: SAKSHAM SHEORAN
+            </a>
+            <a href="mailto:sakshamsheoran2005@gmail.com" class="px-4 py-2 rounded-xl glass-card text-xs font-mono text-slate-300 hover:text-[#30d158] flex items-center gap-2">
+              <i class="fa-solid fa-envelope text-sm"></i> Email
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-black/60 border border-white/10 backdrop-blur-xl">
+          <h3 class="text-xl font-bold font-heading text-white mb-2">Send a Message</h3>
+          <p class="text-xs font-mono text-[#94a3b8] mb-6">Direct communication channel</p>
+
+          <form id="contact-form" class="space-y-4">
+            <!-- Web3Forms API config & Anti-Spam Botcheck -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+            <div>
+              <label class="block text-xs font-mono text-slate-300 mb-1">Your Name</label>
+              <input type="text" name="name" id="form-name" required placeholder="Alex Morgan" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-[#2997ff]" />
+            </div>
+            <div>
+              <label class="block text-xs font-mono text-slate-300 mb-1">Email Address</label>
+              <input type="email" name="email" id="form-email" required placeholder="alex@company.com" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-[#2997ff]" />
+            </div>
+            <div>
+              <label class="block text-xs font-mono text-slate-300 mb-1">Your Message</label>
+              <textarea name="message" id="form-message" rows="3" required placeholder="Tell me about your team, project, or opportunity..." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-[#2997ff]"></textarea>
+            </div>
+            <button type="submit" id="form-submit-btn" class="w-full py-3.5 rounded-xl font-mono text-sm font-bold bg-white text-black hover:bg-[#2997ff] hover:text-white transition-colors flex items-center justify-center gap-2">
+              <span>Send Message</span>
+              <i class="fa-regular fa-paper-plane text-xs"></i>
+            </button>
+            <div id="form-status" class="hidden text-xs font-mono text-center pt-2"></div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       10. PROJECT CASE STUDY MODAL
+       ==================================================================== -->
+  <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div id="modal-backdrop" class="fixed inset-0 bg-black/85 backdrop-blur-xl"></div>
+    <div class="relative z-10 w-full max-w-3xl glass-card p-6 sm:p-10 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <button id="modal-close-btn" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-slate-300 hover:text-white" title="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <span id="modal-category" class="text-xs font-mono font-bold text-[#2997ff] uppercase">CATEGORY</span>
+      <h3 id="modal-title" class="text-2xl sm:text-4xl font-bold font-heading text-white mt-1 mb-2">Project Title</h3>
+      <p id="modal-subtitle" class="text-sm font-mono text-[#94a3b8] mb-6">Subtitle</p>
+
+      <div class="p-3.5 rounded-xl bg-[#2997ff]/10 border border-[#2997ff]/20 text-[#2997ff] text-xs font-mono mb-6">
+        <i class="fa-solid fa-layer-group mr-2"></i>
+        <span id="modal-metrics">Tech Stack</span>
+      </div>
+
+      <div id="modal-description" class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6"></div>
+
+      <div id="modal-tags" class="flex flex-wrap gap-2 mb-8"></div>
+
+      <div class="pt-6 border-t border-white/10 flex justify-between items-center">
+        <a href="https://github.com/Saksham3392" target="_blank" class="text-xs font-mono text-[#2997ff] hover:underline flex items-center gap-1.5">
+          <span>View on GitHub</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+        <button id="modal-dismiss" class="px-5 py-2 rounded-xl glass-card text-xs font-mono text-white hover:bg-white/10">
+          Close Window
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       11. IN-BROWSER RESUME PREVIEW & PRINT MODAL
+       ==================================================================== -->
+  <div id="resume-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6">
+    <div id="resume-modal-backdrop" class="fixed inset-0 bg-black/85 backdrop-blur-xl"></div>
+    <div class="relative z-10 w-full max-w-4xl glass-card flex flex-col shadow-2xl h-[92vh] overflow-hidden">
+      <!-- Modal Header Bar -->
+      <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#0a0e17]/80">
+        <div class="flex items-center gap-2">
+          <span class="traffic-btn traffic-close cursor-pointer" id="resume-close-traffic"></span>
+          <span class="traffic-btn traffic-min"></span>
+          <span class="traffic-btn traffic-max"></span>
+          <span class="text-xs font-mono text-white font-semibold ml-3 flex items-center gap-2">
+            <i class="fa-solid fa-file-lines text-[#2997ff]"></i>
+            Saksham_Sheoran_Resume.pdf (Preview)
+          </span>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            id="resume-print-btn" 
+            class="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-mono flex items-center gap-1.5 transition-all"
+            title="Print or Save as PDF"
+          >
+            <i class="fa-solid fa-print"></i>
+            <span>Print / PDF</span>
+          </button>
+          <button 
+            id="resume-download-btn" 
+            class="px-4 py-1.5 rounded-lg bg-[#2997ff] hover:bg-[#2997ff]/90 text-white text-xs font-mono font-bold flex items-center gap-1.5 transition-all shadow-md"
+            title="Download Official Document"
+          >
+            <i class="fa-solid fa-file-arrow-down"></i>
+            <span>Download PDF</span>
+          </button>
+          <button 
+            id="resume-modal-close" 
+            class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white flex items-center justify-center transition-all ml-1"
+          >
+            <i class="fa-solid fa-xmark text-sm"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Resume Document Container (Paper View) -->
+      <div class="flex-1 overflow-y-auto p-4 sm:p-8 bg-[#0a0e17] flex justify-center items-start">
+        <div id="resume-paper-content" class="w-full max-w-3xl bg-white text-slate-900 rounded-2xl shadow-2xl p-6 sm:p-12 mb-12 font-sans leading-relaxed text-sm shrink-0">
+          <!-- Live rendered resume contents -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       12. FOOTER
+       ==================================================================== -->
+  <footer class="relative z-10 border-t border-white/10 py-10 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-[#94a3b8]">
+    <div class="flex items-center gap-2">
+      <span class="font-bold text-white">Saksham Sheoran</span>
+      <span>• Full-Stack Software Engineer (Chitkara University)</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="https://github.com/Saksham3392" target="_blank" class="hover:text-white">GitHub</a>
+      <a href="https://www.linkedin.com/in/saksham-sheoran/" target="_blank" class="hover:text-white">LinkedIn</a>
+      <span>&copy; 2026 Saksham Sheoran</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
