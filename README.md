@@ -20,6 +20,15 @@
 An engineering-first personal portfolio and interactive resume website built to Apple Human Interface Guidelines (HIG) standards with dark glassmorphism, responsive micro-interactions, live GitHub telemetry, an interactive developer CLI terminal, and an 8-semester academic transcript engine.
 
 ---
+**Live Web App:** https://resume-9w9u.onrender.com
+
+
+Run the following commands in Command Prompt (CMD):
+
+```cmd
+cd /d "c:\Users\Asus\Downloads\CSE AI 5th Sem\PA\PA Q" && start http://localhost:5080 && python server.py
+```
+---
 
 ## ✨ Key Features
 
