@@ -21,8 +21,10 @@ An engineering-first personal portfolio and interactive resume website built to 
 
 ---
 **Live Web App:** 
+
 https://resume-9w9u.onrender.com
-ttps://resume-bay-two-14.vercel.app
+
+https://resume-bay-two-14.vercel.app
 
 
 Run the following commands in Command Prompt (CMD):
