@@ -20,7 +20,9 @@
 An engineering-first personal portfolio and interactive resume website built to Apple Human Interface Guidelines (HIG) standards with dark glassmorphism, responsive micro-interactions, live GitHub telemetry, an interactive developer CLI terminal, and an 8-semester academic transcript engine.
 
 ---
-**Live Web App:** https://resume-9w9u.onrender.com
+**Live Web App:** 
+https://resume-9w9u.onrender.com
+ttps://resume-bay-two-14.vercel.app
 
 
 Run the following commands in Command Prompt (CMD):
